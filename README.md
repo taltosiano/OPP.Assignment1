@@ -33,3 +33,4 @@ ConcreteMember class implements the Member interface and contain a method for up
 ## Tests
 
 ### clone our project here: 
+$ https://github.com/taltosiano/OPP.Assignment1.git
