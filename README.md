@@ -16,6 +16,20 @@ GroupAdmin class implements the Sender interface and contain some methods for re
 ### ConcreteMember
 ConcreteMember class implements the Member interface and contain a method for updating the status of the Member which set by the status of the UndoableStringBuilder object.
 
+|function in GroupAdmin |  Description | 
+| ------------ | ------------ | 
+| notifyRegister() | notify all the register members about every change |  
+| register() | add new member to the hash |   
+| unregister() | remove member from the registers hash | 
+| insert() | inserts a string into character and notify all the registers |  
+| append() | append a string (obj) to character (our usb) and notify all the register |  
+| delete() | delete the characters in a substring of this sequence and notify all the registers |  
+| undo() | erases the last change done to the document and notify all the registers | 
+
+|function in ConcreteMember |  Description | 
+| ------------ | ------------ | 
+| update() | updating our usb to the modified string |  
+
 ## Tests
 
 ### clone our project here: 
