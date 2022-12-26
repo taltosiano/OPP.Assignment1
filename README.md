@@ -32,5 +32,10 @@ ConcreteMember class implements the Member interface and contain a method for up
 
 ## Tests
 
-### clone our project here: 
-$ git clone https://github.com/taltosiano/OPP.Assignment1.git
+### you can clone our project here :point_down: :slightly_smiling_face:	:point_down: : 
+```
+https://github.com/taltosiano/OPP.Assignment1.git
+
+```
+
+
