@@ -17,3 +17,5 @@ GroupAdmin class implements the Sender interface and contain some methods for re
 ConcreteMember class implements the Member interface and contain a method for updating the status of the Member which set by the status of the UndoableStringBuilder object.
 
 ## Tests
+
+### clone our project here: 
