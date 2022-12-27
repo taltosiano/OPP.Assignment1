@@ -14,7 +14,7 @@ Indeed, this is reflected in our assignment, we had to create an observer (Group
 GroupAdmin class implements the Sender interface and contain some methods for registering and unregistering ConcreteMember objects, methods about the status of an UndoableStringBuilder object.
 
 ### ConcreteMember
-ConcreteMember class implements the Member interface and contain a method for updating the status of the Member which set by the status of the UndoableStringBuilder object.
+ConcreteMember class implements the Member interface and contain a method for updating the status of the Member which set by the status of the UndoableStringBuilder object. In this class, we saved the list of registers by a Hash-map type data structure. This type of data structure takes more memory than an Array-list, but is much more efficient in terms of managing the methods on the subscribers.
 
 ### JvmUtilities
 This class came structured and ready in the assignment, what we needed was to check the memory size of the objects we used. This way we can also verify the effectiveness of the code we wrote.
