@@ -36,7 +36,7 @@ This class came structured and ready in the assignment, what we needed was to ch
 ## Tests
 we use Junit 5 testing
 
-### you can clone our project here :point_down: :slightly_smiling_face:	:point_down: 
+### you can clone our repositorty here :point_down: :slightly_smiling_face:	:point_down: 
 ```
 https://github.com/taltosiano/OPP.Assignment1.git
 
