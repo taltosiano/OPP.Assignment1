@@ -4,7 +4,7 @@
 
 #### In this file we'll explain in short view about our exercise
 
-## Obserever Design-Patten
+## Obserever Design-Patten  :goggles: :mailbox_with_mail: 
 Observer is a behavioral design pattern that lets you define a subscription mechanism to notify multiple objects about any events that happen to the object they’re observing. so that the observer design pattern enables a subscriber to register with and receive notifications from a provider.
 Indeed, this is reflected in our assignment, we had to create an observer (GroupAdmin) that alerts registered users (ConcereteMember) to any changes made to the UndoableStringBuilder.
 
@@ -16,6 +16,9 @@ GroupAdmin class implements the Sender interface and contain some methods for re
 ### ConcreteMember
 ConcreteMember class implements the Member interface and contain a method for updating the status of the Member which set by the status of the UndoableStringBuilder object.
 
+### JvmUtilities
+This class came structured and ready in the assignment, what we needed was to check the memory size of the objects we used. This way we can also verify the effectiveness of the code we wrote.
+איןד
 |function in GroupAdmin |  Description | 
 | ------------ | ------------ | 
 | notifyRegister() | notify all the register members about every change |  
@@ -31,6 +34,7 @@ ConcreteMember class implements the Member interface and contain a method for up
 | update() | updating our usb to the modified string |  
 
 ## Tests
+we use Junit 5 testing
 
 ### you can clone our project here :point_down: :slightly_smiling_face:	:point_down: 
 ```
