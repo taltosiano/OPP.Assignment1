@@ -18,7 +18,7 @@ ConcreteMember class implements the Member interface and contain a method for up
 
 ### JvmUtilities
 This class came structured and ready in the assignment, what we needed was to check the memory size of the objects we used. This way we can also verify the effectiveness of the code we wrote.
-איןד
+
 |function in GroupAdmin |  Description | 
 | ------------ | ------------ | 
 | notifyRegister() | notify all the register members about every change |  
