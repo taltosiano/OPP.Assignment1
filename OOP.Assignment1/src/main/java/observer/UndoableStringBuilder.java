@@ -1,12 +1,11 @@
 package observer;
 
-import java.util.Stack;
+import java.util.LinkedList;
 
 public class UndoableStringBuilder {
 
     private StringBuilder sb;
-
-    Stack<StringBuilder> s = new Stack();
+    LinkedList<StringBuilder> s = new LinkedList<>();
 
     @Override
     public String toString() {
@@ -131,4 +130,5 @@ public class UndoableStringBuilder {
         return;
     }
 }
+
 
