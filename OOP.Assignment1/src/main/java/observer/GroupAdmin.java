@@ -69,7 +69,6 @@ public class GroupAdmin implements Sender {
         } else {
             this.registers.remove(obj);
             System.out.println("The Member is unregister now!");
-
         }
     }
 
@@ -84,7 +83,6 @@ public class GroupAdmin implements Sender {
         public void insert ( int offset, String obj){
             this.usb_status.insert(offset, obj);
             notifyAllRegisters();
-
         }
 
     /**
@@ -97,8 +95,8 @@ public class GroupAdmin implements Sender {
         public void append (String obj){
             this.usb_status.append(obj);
             notifyAllRegisters();
-
         }
+    
     /**
      * The removes method delete the characters in a substring of this sequence. The substring begins
      * at the specified start and extends to the character at index end.
