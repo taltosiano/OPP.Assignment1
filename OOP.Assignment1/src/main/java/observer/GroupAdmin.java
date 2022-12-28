@@ -4,19 +4,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GroupAdmin implements Sender {
-    private String name;
-    //  List<Member> registers;
-    private Map<String, Member> registers;
+
+    private Map<Member, String> registers;
     private UndoableStringBuilder usb_status;
 
+    /**
+     * An empty constructor.
+     */
     public GroupAdmin() {
         this.registers = new HashMap<>();
-        this.name = "";
-        //    this.registers = new ArrayList<>();
         this.usb_status = new UndoableStringBuilder();
     }
 
-    public Map<String, Member> getRegisters() {
+    /**
+     * The method returns the Members attribute that registered
+     * @return Hash-map that contains all the register members
+     */
+    public Map<Member, String> getRegisters() {
 
         return registers;
     }
@@ -26,62 +30,56 @@ public class GroupAdmin implements Sender {
         return this.usb_status;
     }
 
-    public void setUsb(UndoableStringBuilder other_ust) {
-        this.usb_status = other_ust;
-        notifyAllRegisters();
-    }
-
     /**
-     * this function notify all the register members about every chanhe.
+     * this function notify all the register members about every change.
      */
     public void notifyAllRegisters() {
-        registers.values().forEach(member -> member.update(this.getUsb()));
-//         for (Member member: this.registers.values()) {
-//             member.update(this.getUsb());
-//         }
-
+         for (Member member: this.registers.keySet()){
+             member.update(this.getUsb());
+        }
     }
 
     /**
-     * @param obj
+     * * The method add a specific member to the Group admin
+     * @param obj - the member the method receive to add the register group
      */
     //methods to register and unregister observers
     @Override
     public void register(Member obj) {
-        if (registers.containsValue(obj)) {
+        if (registers.containsKey(obj)) {
             System.out.println("The Member is already registered!");
         }
-        else {
-            this.registers.put(((ConcreteMember) obj).getName(), obj);
+          else if (obj == null);
+
+        else{
+            this.registers.put(obj, ((ConcreteMember) obj).getName());
+            obj.update(this.getUsb());
             System.out.println("The Member is register!");
         }
     }
 
     /**
-     *
-     * @param obj
+     * The method removes a specific member from the Group admin.
+     * @param obj - the member the method receive to remove from the register group
      */
     @Override
     public void unregister(Member obj) {
-        if (!registers.containsValue(obj)) {
+        if (!registers.containsKey(obj)) {
             System.out.println("This Member is not exist");
         } else {
-            this.registers.remove(((ConcreteMember) obj).getName());
+            this.registers.remove(obj);
             System.out.println("The Member is unregister now!");
-            obj.update(null);
+
         }
     }
 
     /**
-     * Inserts the string into this character sequence.
-     * Exception: This method throws StringIndexOutOfBoundsException if The offset argument less
-     * than zero, and greater from the length of this sequence.
+     * Inserts a specified string into character sequence.
+     * After the method notify about the change to all the register members.
      *
      * @param offset the index (the location) we "pushing"" the string
      * @param obj   the string we insert to this character sequence.
-     * @return the finished string as UndoableStringBuilder
      */
-        //Inserts the string into this character sequence.
         @Override
         public void insert ( int offset, String obj){
             this.usb_status.insert(offset, obj);
@@ -90,12 +88,11 @@ public class GroupAdmin implements Sender {
         }
 
     /**
-     * Appends the specified string to this character sequence.
+     * The method append specified string (obj) to character sequence (our usb).
+     * After the method notify about the change to all the register members.
      *
      * @param obj - the specified string we add to the UndoableStringBuilder.
-     * @return the finished string as UndoableStringBuilder the Modifications.
      */
-        // Appends the specified string to this character sequence.
         @Override
         public void append (String obj){
             this.usb_status.append(obj);
@@ -103,20 +100,13 @@ public class GroupAdmin implements Sender {
 
         }
     /**
-     * Removes the characters in a substring of this sequence. The substring begins
-     * at the specified start and extends to the character at index
-     * end - 1 or to the end of the sequence if no such character exists.
-     * If start is equal to end, no changes are made.
-     * <p>
-     * Exception: This method throws StringIndexOutOfBoundsException if the start is less
-     * than zero, or start is larger than the length of String, or start is larger than end.
+     * The removes method delete the characters in a substring of this sequence. The substring begins
+     * at the specified start and extends to the character at index end.
+     * After we notify about the change to all the register members.
      *
      * @param start the first index of the substring we delete
      * @param end   the last index of the substring we delete
-     * @return the finished string as UndoableStringBuilder after we delete the substring between index "start" until index "end"
      */
-        // Removes the characters in a substring of this sequence.
-        // sent the param the the delete methode from UndoableStringBuilder class
         @Override
         public void delete ( int start, int end){
             this.usb_status.delete(start, end);
@@ -124,23 +114,24 @@ public class GroupAdmin implements Sender {
         }
 
     /**
-     * undo function cancled the last method we make. is there two edge
-     * cases-if the string is empty(we didnt make any actions) and if we append one time.(we add string one time).
-     * in these two cases we will did nothing and the our UndoableStringBuilder will be empty.
+     * The undo method erases the last change done to the document, reverting it to an older state.
+     * After we notify about the change to all the register members.
      */
-        // Erases the last change done to the document, reverting
-        // it to an older state.
         @Override
         public void undo () {
             this.usb_status.undo();
             notifyAllRegisters();
         }
 
-        public String toString () {
-            return "GroupAdmin{" +
-                    "Name='" + name + '\'' +
-                    ", registers=" + registers +
-                    ", message=" + usb_status +
-                    '}';
-        }
+    /**
+     *  To string method
+     * @return Nice print of the objects in the class and their names
+     */
+    @Override
+    public String toString() {
+        return "GroupAdmin{" +
+                "registers=" + registers +
+                ", usb_status=" + usb_status +
+                '}';
+    }
 }
