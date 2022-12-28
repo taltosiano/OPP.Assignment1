@@ -9,15 +9,30 @@ import java.util.Stack;
 
 public class ConcreteMember implements Member{
 
-    private GroupAdmin sender;
     private String name;
     private UndoableStringBuilder usb_status;
 
+    /**
+     * Constructor that receive name of member and create object type  ConcreteMember
+     * @param name - the member's name.
+     */
     public ConcreteMember (String name){
-        this.usb_status = usb_status;
+        this.usb_status = new UndoableStringBuilder();
         this.name = name;
-        this.sender = sender;
     }
+
+    /**
+     * An empty constructor
+     */
+    public ConcreteMember (){
+        this.usb_status = null;
+        this.name = "anonymous";
+    }
+
+        /**
+         * Getter method to get the name of member.
+         * @return the ConcreteMember's name
+         */
 
     public String getName() {
 
@@ -25,52 +40,31 @@ public class ConcreteMember implements Member{
     }
 
     /**
-     *
+     * Getter method to get the usb state.
+     * @return the state right now of the this.usb
+     */
+    public UndoableStringBuilder getUsb_status() {
+        return usb_status;
+    }
+
+    /**
+     * The method actually send the notification by Shallow copy.
      * @param usb - string from class UndoableStringBuilder the function recieve and change
      *           this.usb string of this class to be the string the function recieve.
      */
     public void update(UndoableStringBuilder usb){
-        // actually send the email
+
         this.usb_status = usb;
 
-//        UndoableStringBuilder temp = new UndoableStringBuilder();
-//        temp.append(usb.toString());
-//        this.usb_status = temp;
-
-        // System.out.println("Sending notification to " + memName + " concerning " + ust);
+        System.out.println("Sending notification to " + name + " concerning " + usb_status);
     }
 
     @Override
     public String toString() {
-        return "ConcreteMember{" +
-                "Name='" + name + '\'' +
-                ", message=" + this.usb_status +
-                '}';
+        return
+                "Member's Name:" + this.name + '\'' +
+                ",  right now the string is: " + this.usb_status ;
     }
 
-
-
-    public static void main(String[] args) {
-
-        GroupAdmin GA = new GroupAdmin();
-        ConcreteMember CM = new ConcreteMember("aa");
-        ConcreteMember CM2 = new ConcreteMember("bb");
-        ConcreteMember CM3 = new ConcreteMember("CC");
-
-        GA.register(CM);
-        GA.register(CM2);
-        GA.register(CM);
-        GA.register(CM3);
-        GA.append("TEST");
-        GA.delete(1,2);
-        GA.unregister(CM3);
-        System.out.println(GA.getRegisters());
-        GA.unregister(CM3);
-        GA.append("QQQ");
-        System.out.println(CM+","+CM2+","+CM3);
-        System.out.println(CM3);
-
-
-
-    }
 }
+
