@@ -48,7 +48,7 @@ This class came structured and ready in the assignment, what we needed was to ch
 | toString() | return a in pretty string the name and usb the mamber have  | 
 
 ### Diagram where we can see the connection between the classes & interfeces with their methods
-<img width="1003" alt="image" src="https://user-images.githubusercontent.com/94299489/209980505-79c922d7-63c7-4dff-a15b-49a7d011e71c.png">
+<img width="974" alt="image" src="https://user-images.githubusercontent.com/94299489/209982325-65279f95-bdcd-496a-b603-2ac5fd29a36c.png">
 
 ### you can clone our repositorty here :point_down: :slightly_smiling_face:	:point_down: 
 ```
