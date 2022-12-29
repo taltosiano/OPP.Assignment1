@@ -186,6 +186,8 @@ public class Tests {
         GroupAdmin ga = new GroupAdmin();
         ConcreteMember cm2 = new ConcreteMember("asaf");
         ConcreteMember cm3 = new ConcreteMember("Tal");
+        ga.register(cm2);
+        ga.register(cm3);
         ga.append("Hello");
         ga.append("World");
         ga.undo();
@@ -194,8 +196,10 @@ public class Tests {
         assertEquals("bigHello", ga.getUsb().toString());
         ga.delete(2, 5);
         assertEquals("billo", ga.getUsb().toString());
+        assertTrue(cm2.getUsb_status().toString().equals("billo"));
         ga.undo();
         assertEquals("bigHello", ga.getUsb().toString());
+        System.out.println(ga.getRegisters().values());
 
     }
 
