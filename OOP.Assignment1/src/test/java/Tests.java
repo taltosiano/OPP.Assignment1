@@ -20,29 +20,37 @@ public class Tests {
         GA.register(cm);
         GA.register(cm1);
 
-        System.out.println("------printing the jvmInfo-----");
+        System.out.println("------printing jvmInfo-----");
         logger.info(() -> JvmUtilities.jvmInfo());
         System.out.println();
 
         System.out.println("------testing Footprint-----");
-        GA.append("Hello");
         logger.info(()->JvmUtilities.objectFootprint(GA));
         logger.info(()->JvmUtilities.objectFootprint(cm, cm1));
-        GA.delete(3,5);
         logger.info(()->JvmUtilities.objectFootprint(cm));
         System.out.println();
 
         System.out.println("------testingTotalSize-----");
         logger.info(()->JvmUtilities.objectTotalSize(GA));
-        GA.register(new ConcreteMember("adi"));
-        logger.info(()->JvmUtilities.objectTotalSize(GA));
-        GA.append("World");
-        logger.info(()->JvmUtilities.objectTotalSize(GA));
+        logger.info(()->JvmUtilities.objectTotalSize(cm, cm1));
         System.out.println();
 
         System.out.println("------testing memoryStats-----");
+        System.out.println(JvmUtilities.memoryStats(GA));
+        System.out.println("lets see the change when we register new member ");
+        GA.register(new ConcreteMember("adi"));
+        System.out.println(JvmUtilities.memoryStats(GA));
+        logger.info(()->JvmUtilities.objectTotalSize(GA));
         logger.info(() -> JvmUtilities.memoryStats(GA));
-        logger.info(() -> JvmUtilities.memoryStats(cm));
+        System.out.println("lets see the change when we use append method");
+        GA.append("Hello");
+        System.out.println(JvmUtilities.objectTotalSize(GA));
+        GA.append("World");
+        System.out.println(JvmUtilities.objectTotalSize(GA));
+        System.out.println();
+
+        System.out.println("------testing memoryStats of the registers (suppose to be the same-----");
+        System.out.println(JvmUtilities.memoryStats(cm));
         logger.info(() -> JvmUtilities.memoryStats(cm1));
 
 
@@ -186,8 +194,6 @@ public class Tests {
         GroupAdmin ga = new GroupAdmin();
         ConcreteMember cm2 = new ConcreteMember("asaf");
         ConcreteMember cm3 = new ConcreteMember("Tal");
-        ga.register(cm2);
-        ga.register(cm3);
         ga.append("Hello");
         ga.append("World");
         ga.undo();
@@ -196,12 +202,11 @@ public class Tests {
         assertEquals("bigHello", ga.getUsb().toString());
         ga.delete(2, 5);
         assertEquals("billo", ga.getUsb().toString());
-        assertTrue(cm2.getUsb_status().toString().equals("billo"));
         ga.undo();
         assertEquals("bigHello", ga.getUsb().toString());
-        System.out.println(ga.getRegisters().values());
 
     }
+
 
 
     // ------ConcreteMember testing------
@@ -221,7 +226,11 @@ public class Tests {
         ga.undo();
         assertEquals("big", ga.getUsb().toString());
 
+
+
+
     }
 
 }
+
 
