@@ -28,6 +28,8 @@ This class came structured and ready in the assignment, what we needed was to ch
 
 |function in GroupAdmin |  Description | 
 | ------------ | ------------ | 
+| getRegisters() | return the current register members | 
+| getUsb() | return the current usb string the Group admin updates on | 
 | notifyRegister() | notify all the register members about every change |  
 | register() | add new member to the hash |   
 | unregister() | remove member from the registers hash | 
@@ -35,13 +37,18 @@ This class came structured and ready in the assignment, what we needed was to ch
 | append() | append a string (obj) to character (our usb) and notify all the register |  
 | delete() | delete the characters in a substring of this sequence and notify all the registers |  
 | undo() | erases the last change done to the document and notify all the registers | 
+| toString() | return a in pretty string the registers and the current usb  | 
+
 
 |function in ConcreteMember |  Description | 
 | ------------ | ------------ | 
-| update() | updating our usb to the modified string |  
+| update() | updating our usb to the modified string |
+| getName() | return the member's name | 
+| getUsb_status() | return the current usb string the member have | 
+| toString() | return a in pretty string the name and usb the mamber have  | 
 
-## Tests
-we use Junit 5 testing
+### Diagram where we can see the connection between the classes & interfeces with their methods
+<img width="1003" alt="image" src="https://user-images.githubusercontent.com/94299489/209980505-79c922d7-63c7-4dff-a15b-49a7d011e71c.png">
 
 ### you can clone our repositorty here :point_down: :slightly_smiling_face:	:point_down: 
 ```
